@@ -1,4 +1,4 @@
-package br.com.zup.MiniProjetoModulo05Elegance.exeption;
+package br.com.zup.MiniProjetoModulo05Elegance.exception;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

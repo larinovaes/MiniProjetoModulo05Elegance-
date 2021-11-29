@@ -1,6 +1,6 @@
 package br.com.zup.MiniProjetoModulo05Elegance.cliente;
 
-import br.com.zup.MiniProjetoModulo05Elegance.cliente.dto.ClienteDto;
+import br.com.zup.MiniProjetoModulo05Elegance.dtos.ClienteDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
