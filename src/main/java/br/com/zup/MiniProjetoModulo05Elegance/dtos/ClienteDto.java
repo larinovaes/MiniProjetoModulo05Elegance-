@@ -1,4 +1,4 @@
-package br.com.zup.MiniProjetoModulo05Elegance.cliente.dto;
+package br.com.zup.MiniProjetoModulo05Elegance.dtos;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,6 +22,7 @@ public class ClienteDto {
     @Size(min = 2, max = 20, message = "Favor digitar um nome entre 2 a 20 caracteres")
     private String nome;
     @Email
+    @NotBlank
     private String email;
     @NotBlank
     private String telefone;

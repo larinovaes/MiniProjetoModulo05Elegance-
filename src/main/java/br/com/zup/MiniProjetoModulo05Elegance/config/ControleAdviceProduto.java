@@ -1,6 +1,6 @@
 package br.com.zup.MiniProjetoModulo05Elegance.config;
 
-import br.com.zup.MiniProjetoModulo05Elegance.exeption.MensagemErro;
+import br.com.zup.MiniProjetoModulo05Elegance.exception.MensagemErro;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
