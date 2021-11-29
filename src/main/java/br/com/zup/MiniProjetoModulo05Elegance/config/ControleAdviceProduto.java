@@ -1,4 +1,4 @@
-package br.com.zup.MiniProjetoModulo05Elegance.produto;
+package br.com.zup.MiniProjetoModulo05Elegance.config;
 
 import br.com.zup.MiniProjetoModulo05Elegance.exeption.MensagemErro;
 import org.springframework.http.HttpStatus;

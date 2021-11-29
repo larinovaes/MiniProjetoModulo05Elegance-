@@ -2,6 +2,8 @@ package br.com.zup.MiniProjetoModulo05Elegance.produto;
 
 
 import br.com.zup.MiniProjetoModulo05Elegance.dtos.ProdutoDTO;
+import br.com.zup.MiniProjetoModulo05Elegance.produto.Produto;
+import br.com.zup.MiniProjetoModulo05Elegance.produto.ProdutoService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

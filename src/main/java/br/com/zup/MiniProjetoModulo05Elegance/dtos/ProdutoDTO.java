@@ -12,6 +12,7 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 public class ProdutoDTO {
+    private Integer codigoDoProduto;
     @NotBlank
     @Size(max = 100, min = 3)
     private String nomeDoProduto;
