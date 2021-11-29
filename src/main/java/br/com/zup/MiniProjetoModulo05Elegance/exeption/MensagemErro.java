@@ -10,4 +10,9 @@ import lombok.Setter;
 public class MensagemErro {
     private String mensagem;
     private String campo;
+
+    public MensagemErro(String mensagem, String campo) {
+        this.mensagem = mensagem;
+        this.campo = campo;
+    }
 }
