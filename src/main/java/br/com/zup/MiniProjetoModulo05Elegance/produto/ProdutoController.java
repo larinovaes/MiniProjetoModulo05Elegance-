@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/produtos")
 public class ProdutoController {
@@ -13,7 +15,7 @@ public class ProdutoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Produto salvarProduto(@RequestBody Produto produto) {
+    public Produto salvarProduto(@RequestBody @Valid Produto produto) {
         produtoService.cadastoProduto(produto);
         return produto;
     }
