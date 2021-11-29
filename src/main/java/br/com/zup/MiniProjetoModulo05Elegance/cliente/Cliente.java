@@ -1,13 +1,13 @@
 package br.com.zup.MiniProjetoModulo05Elegance.cliente;
 
+import br.com.zup.MiniProjetoModulo05Elegance.compra.Compra;
+import br.com.zup.MiniProjetoModulo05Elegance.produto.Produto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "clientes")
@@ -23,4 +23,7 @@ public class Cliente {
     private String email;
     private String telefone;
     private String endereco;
+    @ManyToMany(cascade = CascadeType.MERGE)
+    private List<Compra> compras;
+
 }
