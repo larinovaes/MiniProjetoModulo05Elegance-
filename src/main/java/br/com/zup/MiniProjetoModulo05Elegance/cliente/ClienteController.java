@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/clientes")
 public class ClienteController {
@@ -17,9 +19,9 @@ public class ClienteController {
     private ModelMapper modelMapper;
 
     @PostMapping
-    public ClienteDto cadastrarCliente(@RequestBody ClienteDto cliente) {
-Cliente novoCliente = modelMapper.map(cliente, Cliente.class);
-        return  modelMapper.map(clienteService.salvarCliente(novoCliente), ClienteDto.class);
+    public ClienteDto cadastrarCliente(@RequestBody @Valid ClienteDto cliente) {
+        Cliente novoCliente = modelMapper.map(cliente, Cliente.class);
+        return modelMapper.map(clienteService.salvarCliente(novoCliente), ClienteDto.class);
     }
 
 }
