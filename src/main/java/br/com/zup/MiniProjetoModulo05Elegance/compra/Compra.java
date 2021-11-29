@@ -22,7 +22,7 @@ public class Compra {
     private Integer numeroDoPedido;
     @ManyToOne(cascade = CascadeType.MERGE)
     private Cliente cliente;
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToMany(cascade = CascadeType.MERGE)
     private List<Produto> produtos;
     private Double valor;
     private LocalDateTime dataDeCompra;
