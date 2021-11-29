@@ -16,6 +16,7 @@ import javax.validation.constraints.Size;
 
 public class ClienteDto {
     @CPF
+    @NotBlank
     private String cpf;
     @NotNull
     @Size(min = 2, max = 20, message = "Favor digitar um nome entre 2 a 20 caracteres")
