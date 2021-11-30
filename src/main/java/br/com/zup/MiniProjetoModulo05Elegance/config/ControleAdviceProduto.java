@@ -1,6 +1,7 @@
 package br.com.zup.MiniProjetoModulo05Elegance.config;
 
 import br.com.zup.MiniProjetoModulo05Elegance.exception.MensagemErro;
+import br.com.zup.MiniProjetoModulo05Elegance.exception.PesquisarEmailException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -24,5 +25,11 @@ public class ControleAdviceProduto {
         }
 
         return erros;
+    }
+
+    @ExceptionHandler(PesquisarEmailException.class)
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    public MensagemErro tratarExcecaoPesquisarEmailException(PesquisarEmailException exception){
+        return new MensagemErro(exception.getMessage());
     }
 }
