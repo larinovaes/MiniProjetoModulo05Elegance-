@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClienteService {
@@ -23,6 +24,10 @@ public class ClienteService {
         Iterable<Cliente> listaDeClientes = clienteRepositoy.findAll();
         return (List<Cliente>) listaDeClientes;
     }
+
+
+
+
 
     public Cliente pesquisarEmailRepetido(Cliente cliente) {
         for (Cliente clienteReferencia : clienteRepositoy.findAll()) {
