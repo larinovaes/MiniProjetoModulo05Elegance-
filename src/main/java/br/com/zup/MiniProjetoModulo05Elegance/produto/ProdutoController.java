@@ -32,8 +32,8 @@ public class ProdutoController {
 
     @GetMapping
     public List<ProdutoDTO> exibirListaDeProdutos() {
-     List<ProdutoDTO> produtos = new ArrayList<>();
-        for (Produto referencia:produtoService.exibirListaDeProdutos()) {
+        List<ProdutoDTO> produtos = new ArrayList<>();
+        for (Produto referencia : produtoService.exibirListaDeProdutos()) {
             ProdutoDTO produtoDTO = modelMapper.map(referencia, ProdutoDTO.class);
             produtos.add(produtoDTO);
         }
