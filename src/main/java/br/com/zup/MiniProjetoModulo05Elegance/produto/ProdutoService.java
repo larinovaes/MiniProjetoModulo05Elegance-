@@ -20,4 +20,10 @@ public class ProdutoService {
         List<Produto> produtos = (List<Produto>) produtoRepository.findAll();
         return produtos;
     }
+
+    public void deletarProduto(Integer codigoDoProduto) {
+        if (produtoRepository.existsById(codigoDoProduto)) {
+            produtoRepository.deleteById(codigoDoProduto);
+        }
+    }
 }
