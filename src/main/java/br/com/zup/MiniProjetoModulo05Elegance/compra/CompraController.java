@@ -20,7 +20,7 @@ public class CompraController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Compra realizarCompra (Compra compra){
-        return compraService.realizarCompra(compra);
+        return null;
 
     }
 }

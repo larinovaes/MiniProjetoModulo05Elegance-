@@ -16,7 +16,6 @@ public class ClienteService {
 
     public Cliente salvarCliente(Cliente cliente) {
         Cliente cliente1 = pesquisarEmailRepetido(cliente);
-        Cliente cliente2 = pesquisarCpfRepetido(cliente);
         return clienteRepositoy.save(cliente);
     }
 
@@ -35,14 +34,6 @@ public class ClienteService {
         for (Cliente clienteReferencia : clienteRepositoy.findAll()) {
             if (clienteReferencia.getEmail().equalsIgnoreCase(cliente.getEmail())) {
                 throw new PesquisarEmailException("Esse email ja possui cadastro em nosso banco!");
-            }
-        }
-        return clienteRepositoy.save(cliente);
-    }
-    public Cliente pesquisarCpfRepetido(Cliente cliente) {
-        for (Cliente novoCliente : clienteRepositoy.findAll()) {
-            if (novoCliente.getCpf().equalsIgnoreCase(cliente.getCpf())) {
-                throw new PesquisarCpfException("CPF já cadastrado!");
             }
         }
         return clienteRepositoy.save(cliente);
