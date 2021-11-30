@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -30,7 +31,12 @@ public class ProdutoController {
     }
 
     @GetMapping
-    public List<Produto> exibirListaDeProdutos(Produto produto) {
-        return produtoService.exibirListaDeProdutos(produto);
+    public List<ProdutoDTO> exibirListaDeProdutos() {
+     List<ProdutoDTO> produtos = new ArrayList<>();
+        for (Produto referencia:produtoService.exibirListaDeProdutos()) {
+            ProdutoDTO produtoDTO = modelMapper.map(referencia, ProdutoDTO.class);
+            produtos.add(produtoDTO);
+        }
+        return produtos;
     }
 }
