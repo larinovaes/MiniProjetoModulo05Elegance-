@@ -1,5 +1,6 @@
 package br.com.zup.MiniProjetoModulo05Elegance.produto;
 
+import br.com.zup.MiniProjetoModulo05Elegance.exception.ClienteNaoEncontrado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +28,7 @@ public class ProdutoService {
                 return referencia;
             }
         }
-        throw new RuntimeException("Não existe");
+        throw new ClienteNaoEncontrado("Cliente Não encontrado");
     }
 
     public void deletarProduto(Integer codigoDoProduto) {
