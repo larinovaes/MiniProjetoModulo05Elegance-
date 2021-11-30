@@ -1,5 +1,6 @@
 package br.com.zup.MiniProjetoModulo05Elegance.cliente;
 
+import br.com.zup.MiniProjetoModulo05Elegance.exception.PesquisarEmailException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ public class ClienteService {
     public Cliente pesquisarEmailRepetido(Cliente cliente) {
         for (Cliente clienteReferencia : clienteRepositoy.findAll()) {
             if (clienteReferencia.getEmail().equalsIgnoreCase(cliente.getEmail())) {
-                throw new RuntimeException("Esse email ja possui cadastro em nosso banco!");
+                throw new PesquisarEmailException("Esse email ja possui cadastro em nosso banco!");
             }
         }
         return clienteRepositoy.save(cliente);
