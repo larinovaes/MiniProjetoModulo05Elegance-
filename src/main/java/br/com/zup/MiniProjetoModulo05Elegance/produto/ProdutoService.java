@@ -21,6 +21,15 @@ public class ProdutoService {
         return produtos;
     }
 
+    public Produto produtoEspecifico(Integer codigoDoProduto) {
+        for (Produto referencia:produtoRepository.findAll()) {
+            if (referencia.getCodigoDoProduto().equals(codigoDoProduto)) {
+                return referencia;
+            }
+        }
+        throw new RuntimeException("Não existe");
+    }
+
     public void deletarProduto(Integer codigoDoProduto) {
         if (produtoRepository.existsById(codigoDoProduto)) {
             produtoRepository.deleteById(codigoDoProduto);
