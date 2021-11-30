@@ -39,4 +39,10 @@ public class ProdutoController {
         }
         return produtos;
     }
+
+    @DeleteMapping("/{codigoDoProduto}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletarProduto(@PathVariable Integer codigoDoProduto) {
+        produtoService.deletarProduto(codigoDoProduto);
+    }
 }
