@@ -27,10 +27,7 @@ public class ClienteController {
         Cliente novoCliente = modelMapper.map(cliente, Cliente.class);
         return modelMapper.map(clienteService.salvarCliente(novoCliente), ClienteDto.class);
     }
-}
 
-<<<<<<< HEAD
-=======
     @GetMapping
     public List<ClienteFiltroDTO> exibirClientes() {
         List<ClienteFiltroDTO> listaDeClientes = new ArrayList<>();
@@ -40,6 +37,12 @@ public class ClienteController {
         }
         return listaDeClientes;
     }
->>>>>>> f5e5ff0 (Adicionar, na Classe ClienteController, metodo para exibir todos os clientes)
 
+    @GetMapping("/{cpf}")
+    public ClienteFiltroDTO exibirClientePorCpf(@PathVariable String cpf) {
+        Cliente clientes = clienteService.buscarClienteporCpf(cpf);
+        return modelMapper.map(clientes, ClienteFiltroDTO.class);
+    }
+
+}
 
