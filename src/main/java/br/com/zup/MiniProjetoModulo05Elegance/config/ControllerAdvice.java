@@ -1,5 +1,6 @@
 package br.com.zup.MiniProjetoModulo05Elegance.config;
 
+import br.com.zup.MiniProjetoModulo05Elegance.exception.ClienteNaoEncontrado;
 import br.com.zup.MiniProjetoModulo05Elegance.exception.MensagemErro;
 import br.com.zup.MiniProjetoModulo05Elegance.exception.PesquisarCpfException;
 import br.com.zup.MiniProjetoModulo05Elegance.exception.PesquisarEmailException;
@@ -37,6 +38,12 @@ public class ControllerAdvice {
     @ExceptionHandler(PesquisarCpfException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     public MensagemErro tratarExcecaoPesquisarCpfException(PesquisarCpfException exception){
+        return new MensagemErro(exception.getMessage());
+    }
+
+    @ExceptionHandler(ClienteNaoEncontrado.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public MensagemErro tratarExcecaoDeClienteNaoEncontrado(ClienteNaoEncontrado exception){
         return new MensagemErro(exception.getMessage());
     }
 

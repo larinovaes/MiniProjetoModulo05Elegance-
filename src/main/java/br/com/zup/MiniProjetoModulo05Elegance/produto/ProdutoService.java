@@ -1,5 +1,6 @@
 package br.com.zup.MiniProjetoModulo05Elegance.produto;
 
+import br.com.zup.MiniProjetoModulo05Elegance.exception.ClienteNaoEncontrado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,15 @@ public class ProdutoService {
     public List<Produto> exibirListaDeProdutos() {
         List<Produto> produtos = (List<Produto>) produtoRepository.findAll();
         return produtos;
+    }
+
+    public Produto produtoEspecifico(Integer codigoDoProduto) {
+        for (Produto referencia:produtoRepository.findAll()) {
+            if (referencia.getCodigoDoProduto().equals(codigoDoProduto)) {
+                return referencia;
+            }
+        }
+        throw new ClienteNaoEncontrado("Cliente Não encontrado");
     }
 
     public void deletarProduto(Integer codigoDoProduto) {
