@@ -15,4 +15,8 @@ public class MensagemErro {
         this.mensagem = mensagem;
         this.campo = campo;
     }
+
+    public MensagemErro(String mensagem) {
+        this.mensagem = mensagem;
+    }
 }
