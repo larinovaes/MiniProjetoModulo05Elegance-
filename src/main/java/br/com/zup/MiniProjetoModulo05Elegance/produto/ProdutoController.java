@@ -41,11 +41,9 @@ public class ProdutoController {
     }
 
     @GetMapping("/{codigoDoProduto}")
-    public Produto exibirProdutosEspecifico(@RequestBody Integer codigoDoProduto) {
+    public Produto exibirProdutosEspecifico(@PathVariable Integer codigoDoProduto) {
       return produtoService.produtoEspecifico(codigoDoProduto);
     }
-
-
 
     @DeleteMapping("/{codigoDoProduto}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
