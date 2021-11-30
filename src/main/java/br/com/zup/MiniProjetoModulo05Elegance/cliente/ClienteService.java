@@ -25,11 +25,10 @@ public class ClienteService {
         return (List<Cliente>) listaDeClientes;
     }
 
-public  Cliente buscarClienteporCpf(String cpf){
+    public Cliente buscarClienteporCpf(String cpf) {
         Optional<Cliente> clienteCpf = Optional.ofNullable(clienteRepositoy.findByCpf(cpf));
         return clienteCpf.get();
-}
-
+    }
 
 
     public Cliente pesquisarEmailRepetido(Cliente cliente) {

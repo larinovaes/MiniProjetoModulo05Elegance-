@@ -24,9 +24,7 @@ public class ClienteController {
         Cliente novoCliente = modelMapper.map(cliente, Cliente.class);
         return modelMapper.map(clienteService.salvarCliente(novoCliente), ClienteDto.class);
     }
-
-
-
 }
+
 
 
