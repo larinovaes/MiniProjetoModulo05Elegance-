@@ -1,5 +1,6 @@
 package br.com.zup.MiniProjetoModulo05Elegance.compra;
 
+import br.com.zup.MiniProjetoModulo05Elegance.dtos.CompraDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,8 +20,11 @@ public class CompraController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Compra realizarCompra (Compra compra){
-        return null;
-
+    public CompraDTO realizarCompra(CompraDTO compraDTO) {
+        Compra compra = modelMapper.map(compraDTO, Compra.class);
+        compraService.realizarCompra(compra);
+        compraDTO = modelMapper.map(compra, CompraDTO.class);
+        return compraDTO;
+ 
     }
 }
