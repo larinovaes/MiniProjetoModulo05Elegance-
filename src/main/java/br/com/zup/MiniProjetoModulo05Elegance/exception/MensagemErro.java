@@ -1,4 +1,4 @@
-package br.com.zup.MiniProjetoModulo05Elegance.exeption;
+package br.com.zup.MiniProjetoModulo05Elegance.exception;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,5 +14,9 @@ public class MensagemErro {
     public MensagemErro(String mensagem, String campo) {
         this.mensagem = mensagem;
         this.campo = campo;
+    }
+
+    public MensagemErro(String mensagem) {
+        this.mensagem = mensagem;
     }
 }
