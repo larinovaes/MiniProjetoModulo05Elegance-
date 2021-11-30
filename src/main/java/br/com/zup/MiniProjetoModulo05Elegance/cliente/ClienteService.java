@@ -1,8 +1,12 @@
 package br.com.zup.MiniProjetoModulo05Elegance.cliente;
 
+import br.com.zup.MiniProjetoModulo05Elegance.exception.PesquisarCpfException;
 import br.com.zup.MiniProjetoModulo05Elegance.exception.PesquisarEmailException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClienteService {
@@ -12,8 +16,20 @@ public class ClienteService {
 
     public Cliente salvarCliente(Cliente cliente) {
         Cliente cliente1 = pesquisarEmailRepetido(cliente);
+        Cliente cliente2 = pesquisarCpfRepetido(cliente);
         return clienteRepositoy.save(cliente);
     }
+
+    public List<Cliente> exibirCliente() {
+        Iterable<Cliente> listaDeClientes = clienteRepositoy.findAll();
+        return (List<Cliente>) listaDeClientes;
+    }
+
+    public Cliente buscarClienteporCpf(String cpf) {
+        Optional<Cliente> clienteCpf = Optional.ofNullable(clienteRepositoy.findByCpf(cpf));
+        return clienteCpf.get();
+    }
+
 
     public Cliente pesquisarEmailRepetido(Cliente cliente) {
         for (Cliente clienteReferencia : clienteRepositoy.findAll()) {
@@ -23,6 +39,13 @@ public class ClienteService {
         }
         return clienteRepositoy.save(cliente);
     }
-
+    public Cliente pesquisarCpfRepetido(Cliente cliente) {
+        for (Cliente novoCliente : clienteRepositoy.findAll()) {
+            if (novoCliente.getCpf().equalsIgnoreCase(cliente.getCpf())) {
+                throw new PesquisarCpfException("CPF já cadastrado!");
+            }
+        }
+        return clienteRepositoy.save(cliente);
+    }
 
 }
