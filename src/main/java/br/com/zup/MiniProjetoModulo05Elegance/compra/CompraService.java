@@ -19,4 +19,7 @@ public class CompraService {
         this.produtoRepository = produtoRepository;
     }
 
+    public Compra realizarCompra (Compra compra){
+        return compraRepository.save(compra);
+    }
 }
