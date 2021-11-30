@@ -9,5 +9,8 @@ import lombok.Setter;
 @NoArgsConstructor
 
 public class ClienteFiltroDTO {
+    private String nome;
+    private String cpf;
+    private String telefone;
 
 }
