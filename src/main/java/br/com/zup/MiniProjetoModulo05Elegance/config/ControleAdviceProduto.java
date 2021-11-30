@@ -20,7 +20,7 @@ public class ControleAdviceProduto {
         List<MensagemErro> erros = new ArrayList<>();
 
         for (FieldError fieldError : exception.getFieldErrors()) {
-            MensagemErro mensagemErro = new MensagemErro(fieldError.getDefaultMessage(), fieldError.getField());
+            MensagemErro mensagemErro = new MensagemErro(fieldError.getDefaultMessage());
             erros.add(mensagemErro);
         }
 
