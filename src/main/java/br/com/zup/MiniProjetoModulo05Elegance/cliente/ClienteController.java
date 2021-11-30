@@ -18,8 +18,8 @@ public class ClienteController {
 
     @PostMapping
     public ClienteDto cadastrarCliente(@RequestBody ClienteDto cliente) {
-Cliente novoCliente = modelMapper.map(cliente, Cliente.class);
-        return  modelMapper.map(clienteService.salvarCliente(novoCliente), ClienteDto.class);
+        Cliente novoCliente = modelMapper.map(cliente, Cliente.class);
+        return modelMapper.map(clienteService.salvarCliente(novoCliente), ClienteDto.class);
     }
 
 }
