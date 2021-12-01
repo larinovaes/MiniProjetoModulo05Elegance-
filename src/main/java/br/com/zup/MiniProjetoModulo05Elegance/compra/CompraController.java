@@ -4,10 +4,7 @@ import br.com.zup.MiniProjetoModulo05Elegance.dtos.CompraDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/compras")
@@ -18,13 +15,14 @@ public class CompraController {
     @Autowired
     ModelMapper modelMapper;
 
-    @PostMapping
+    @PutMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CompraDTO realizarCompra(CompraDTO compraDTO) {
+    public CompraDTO realizarCompra(@RequestBody CompraDTO compraDTO) {
         Compra compra = modelMapper.map(compraDTO, Compra.class);
-        compraService.realizarCompra(compra);
+        compraService.salvarCompra(compra);
         compraDTO = modelMapper.map(compra, CompraDTO.class);
         return compraDTO;
  
     }
+
 }
