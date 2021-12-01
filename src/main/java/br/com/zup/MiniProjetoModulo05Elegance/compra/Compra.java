@@ -20,9 +20,9 @@ public class Compra {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer numeroDoPedido;
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Cliente cliente;
-    @ManyToMany(cascade = CascadeType.MERGE)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Produto> produtos;
     private Double valor;
     private LocalDateTime dataDeCompra;
