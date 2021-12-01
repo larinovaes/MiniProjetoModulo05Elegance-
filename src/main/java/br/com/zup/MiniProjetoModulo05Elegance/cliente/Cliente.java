@@ -23,7 +23,7 @@ public class Cliente {
     private String email;
     private String telefone;
     private String endereco;
-    @OneToMany(cascade = CascadeType.MERGE)
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Compra> compras;
 
 }
