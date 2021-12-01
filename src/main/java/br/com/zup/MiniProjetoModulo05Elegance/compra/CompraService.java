@@ -37,7 +37,7 @@ public class CompraService {
 
     public Compra salvarCompra(Compra compra) {
         Cliente clientes = clienteService.buscarClienteporCpf(compra.getCliente().getCpf());
-        compra.setCliente((Cliente) clientes);
+        compra.setCliente(clientes);
 
         List<Produto> produtos = buscarProdutos(compra.getProdutos());
         compra.setProdutos(produtos);
