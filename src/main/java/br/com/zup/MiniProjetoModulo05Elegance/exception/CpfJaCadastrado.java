@@ -1,8 +1,8 @@
 package br.com.zup.MiniProjetoModulo05Elegance.exception;
 
-public class ExceptioncpfInvalid extends RuntimeException{
+public class CpfJaCadastrado extends RuntimeException{
 
-    public ExceptioncpfInvalid(String message) {
+    public CpfJaCadastrado(String message) {
         super(message);
     }
 }
