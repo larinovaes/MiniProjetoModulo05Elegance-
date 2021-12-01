@@ -1,5 +1,6 @@
 package br.com.zup.MiniProjetoModulo05Elegance.cliente;
 
+import br.com.zup.MiniProjetoModulo05Elegance.exception.ClienteNaoEncontrado;
 import br.com.zup.MiniProjetoModulo05Elegance.exception.CpfJaCadastrado;
 import br.com.zup.MiniProjetoModulo05Elegance.exception.EmailJaCadastrado;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +41,11 @@ public class ClienteService {
         if (clienteRepositoy.existsById(cpf)) {
             throw new CpfJaCadastrado("CPF já cadastrado");
         }
+    }
+    public void deletarCliente (String cpf) {
+        if (!clienteRepositoy.existsById(cpf)){
+            throw new ClienteNaoEncontrado("Cliente não encontrado");
+        }
+        clienteRepositoy.deleteById(cpf);
     }
 }

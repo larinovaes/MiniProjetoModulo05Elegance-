@@ -1,20 +1,18 @@
 package br.com.zup.MiniProjetoModulo05Elegance.dtos;
 
-import br.com.zup.MiniProjetoModulo05Elegance.cliente.Cliente;
 import br.com.zup.MiniProjetoModulo05Elegance.produto.Produto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
-@NoArgsConstructor
 @Getter
 @Setter
-public class CompraDTO {
+@NoArgsConstructor
 
-    private Cliente cliente;
+public class CompraSaidaDTO {
+    private ClienteSaidaDTO cliente;
+    private Integer valorTotal;
     private List<Produto> produtos;
-
 }

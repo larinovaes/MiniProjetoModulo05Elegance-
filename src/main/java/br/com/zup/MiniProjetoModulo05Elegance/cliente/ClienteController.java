@@ -1,6 +1,6 @@
 package br.com.zup.MiniProjetoModulo05Elegance.cliente;
 
-import br.com.zup.MiniProjetoModulo05Elegance.dtos.ClienteDto;
+import br.com.zup.MiniProjetoModulo05Elegance.dtos.ClienteDTO;
 import br.com.zup.MiniProjetoModulo05Elegance.dtos.ClienteFiltroDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +23,9 @@ public class ClienteController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ClienteDto cadastrarCliente(@RequestBody @Valid ClienteDto cliente) {
+    public ClienteDTO cadastrarCliente(@RequestBody @Valid ClienteDTO cliente) {
         Cliente novoCliente = modelMapper.map(cliente, Cliente.class);
-        return modelMapper.map(clienteService.salvarCliente(novoCliente), ClienteDto.class);
+        return modelMapper.map(clienteService.salvarCliente(novoCliente), ClienteDTO.class);
     }
 
     @GetMapping
@@ -44,5 +44,12 @@ public class ClienteController {
         return modelMapper.map(clientes, ClienteFiltroDTO.class);
     }
 
+    @DeleteMapping("/{cpf}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletarCpf(@PathVariable String cpf) {
+        clienteService.deletarCliente(cpf);
+
+
+    }
 }
 
