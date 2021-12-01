@@ -1,9 +1,6 @@
 package br.com.zup.MiniProjetoModulo05Elegance.config;
 
-import br.com.zup.MiniProjetoModulo05Elegance.exception.ClienteNaoEncontrado;
-import br.com.zup.MiniProjetoModulo05Elegance.exception.MensagemErro;
-import br.com.zup.MiniProjetoModulo05Elegance.exception.ExceptioncpfInvalid;
-import br.com.zup.MiniProjetoModulo05Elegance.exception.EmailJaCadastrado;
+import br.com.zup.MiniProjetoModulo05Elegance.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -28,9 +25,9 @@ public class ControllerAdvice {
 
         return erros;
     }
-    @ExceptionHandler(ExceptioncpfInvalid.class)
+    @ExceptionHandler(CpfJaCadastrado.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    public MensagemErro tratarExecessaoDeCpfInvalido(ExceptioncpfInvalid exception) {
+    public MensagemErro tratarExecessaoDeCpfInvalido(CpfJaCadastrado exception) {
         return new MensagemErro(exception.getMessage());
     }
 
@@ -43,6 +40,12 @@ public class ControllerAdvice {
     @ExceptionHandler(ClienteNaoEncontrado.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public MensagemErro tratarExcessaoDeClienteNaoEncontrado(ClienteNaoEncontrado exception){
+        return new MensagemErro(exception.getMessage());
+    }
+
+    @ExceptionHandler(EsseProdutoJaFoiDeletado.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public MensagemErro tratarExcessaoDeProdutoJaCadastrado(EsseProdutoJaFoiDeletado exception){
         return new MensagemErro(exception.getMessage());
     }
 
