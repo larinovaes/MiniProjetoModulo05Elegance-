@@ -44,5 +44,12 @@ public class ClienteController {
         return modelMapper.map(clientes, ClienteFiltroDTO.class);
     }
 
+    @DeleteMapping("/{cpf}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletarCpf(@PathVariable String cpf) {
+        clienteService.deletarCliente(cpf);
+
+
+    }
 }
 
