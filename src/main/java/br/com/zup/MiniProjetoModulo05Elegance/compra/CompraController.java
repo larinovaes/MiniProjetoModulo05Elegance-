@@ -22,7 +22,6 @@ public class CompraController {
     @ResponseStatus(HttpStatus.CREATED)
     public CompraDTO realizarCompra(CompraDTO compraDTO) {
         Compra compra = modelMapper.map(compraDTO, Compra.class);
-        compraService.realizarCompra(compra);
         compraDTO = modelMapper.map(compra, CompraDTO.class);
         return compraDTO;
  
