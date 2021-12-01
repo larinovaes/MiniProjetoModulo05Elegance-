@@ -1,6 +1,8 @@
 package br.com.zup.MiniProjetoModulo05Elegance.compra;
 
+import br.com.zup.MiniProjetoModulo05Elegance.dtos.AdicionarCompraDTO;
 import br.com.zup.MiniProjetoModulo05Elegance.dtos.CompraDTO;
+import br.com.zup.MiniProjetoModulo05Elegance.dtos.CompraSaidaDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,14 +17,19 @@ public class CompraController {
     @Autowired
     ModelMapper modelMapper;
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public CompraSaidaDTO realizarCompra(@RequestBody CompraSaidaDTO compraSaidaDTO) {
+        Compra compra = modelMapper.map(compraSaidaDTO, Compra.class);
+        compraService.salvarCompra(compra);
+        compraSaidaDTO = modelMapper.map(compra, CompraSaidaDTO.class);
+        return compraSaidaDTO;
+ 
+    }
     @PutMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CompraDTO realizarCompra(@RequestBody CompraDTO compraDTO) {
-        Compra compra = modelMapper.map(compraDTO, Compra.class);
-        compraService.salvarCompra(compra);
-        compraDTO = modelMapper.map(compra, CompraDTO.class);
-        return compraDTO;
- 
+    public void adicionarCompraAoCliente(@RequestBody AdicionarCompraDTO adicionarCompraDTO){
+compraService.adicionarCompraAoCliente(adicionarCompraDTO.getCpf(), adicionarCompraDTO.getNumeroDoPedido());
     }
 
 }
