@@ -1,6 +1,7 @@
 package br.com.zup.MiniProjetoModulo05Elegance.produto;
 
 import br.com.zup.MiniProjetoModulo05Elegance.exception.ClienteNaoEncontrado;
+import br.com.zup.MiniProjetoModulo05Elegance.exception.EsseProdutoJaFoiDeletado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,8 +33,9 @@ public class ProdutoService {
     }
 
     public void deletarProduto(Integer codigoDoProduto) {
-        if (produtoRepository.existsById(codigoDoProduto)) {
-            produtoRepository.deleteById(codigoDoProduto);
+        if (!produtoRepository.existsById(codigoDoProduto)) {
+            throw new EsseProdutoJaFoiDeletado("Esse produto já foi deletado");
         }
+        produtoRepository.deleteById(codigoDoProduto);
     }
 }
