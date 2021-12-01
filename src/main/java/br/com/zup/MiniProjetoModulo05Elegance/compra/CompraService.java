@@ -43,6 +43,26 @@ public class CompraService {
         compra.setProdutos(produtos);
         return compraRepository.save(compra);
     }
+
+
+    private List<Produto> buscarProdutos(List<Produto> produtos) {
+
+        List<Produto> listaAtualizada = new ArrayList<>();
+
+        for (Produto produto : produtos) {
+            if (produtoRepository.existsByNomeDoProduto(produto.getNomeDoProduto())) {
+                listaAtualizada.add(produtoRepository.findByNomeDoProduto(produto.getNomeDoProduto()));
+            }else {
+                listaAtualizada.add(produto);
+            }
+        }
+
+        return listaAtualizada;
+    }
+
+
+
+
 }
 
 
