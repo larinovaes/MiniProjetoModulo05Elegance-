@@ -16,7 +16,7 @@ public class CompraDTO {
 
     private Cliente cliente;
     private List<Produto> produtos;
-    private Double valor;
-    private LocalDateTime dataDeCompra;
+   // private Double valor;
+  //  private LocalDateTime dataDeCompra;
 
 }
