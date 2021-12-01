@@ -14,4 +14,5 @@ public interface ClienteRepositoy extends CrudRepository<Cliente, String> {
 
     Cliente findByNome(String nome);
 
+    Integer countByEmail(String email);
 }
