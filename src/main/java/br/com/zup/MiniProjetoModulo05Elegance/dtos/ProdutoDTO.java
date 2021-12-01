@@ -11,6 +11,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @Getter
 @Setter
+
 public class ProdutoDTO {
     private Integer codigoDoProduto;
     @NotBlank
