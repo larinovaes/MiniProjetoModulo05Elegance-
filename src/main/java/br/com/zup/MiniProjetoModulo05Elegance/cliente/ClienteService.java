@@ -1,7 +1,7 @@
 package br.com.zup.MiniProjetoModulo05Elegance.cliente;
 
-import br.com.zup.MiniProjetoModulo05Elegance.exception.PesquisarCpfException;
-import br.com.zup.MiniProjetoModulo05Elegance.exception.PesquisarEmailException;
+import br.com.zup.MiniProjetoModulo05Elegance.exception.CpfJaCadastrado;
+import br.com.zup.MiniProjetoModulo05Elegance.exception.EmailJaCadastrado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,8 @@ public class ClienteService {
     private ClienteRepositoy clienteRepositoy;
 
     public Cliente salvarCliente(Cliente cliente) {
-        Cliente cliente1 = pesquisarEmailRepetido(cliente);
+        validarEmail(cliente.getEmail());
+        validarCpf(cliente.getCpf());
         return clienteRepositoy.save(cliente);
     }
 
@@ -29,14 +30,15 @@ public class ClienteService {
         return clienteCpf.get();
     }
 
-
-    public Cliente pesquisarEmailRepetido(Cliente cliente) {
-        for (Cliente clienteReferencia : clienteRepositoy.findAll()) {
-            if (clienteReferencia.getEmail().equalsIgnoreCase(cliente.getEmail())) {
-                throw new PesquisarEmailException("Esse email ja possui cadastro em nosso banco!");
-            }
+    public void validarEmail(String email) {
+        if (clienteRepositoy.countByEmail(email) > 0) {
+            throw new EmailJaCadastrado("Email já cadastrado");
         }
-        return clienteRepositoy.save(cliente);
     }
 
+    public void validarCpf(String cpf) {
+        if (clienteRepositoy.existsById(cpf)) {
+            throw new CpfJaCadastrado("CPF já cadastrado");
+        }
+    }
 }

@@ -1,9 +1,6 @@
 package br.com.zup.MiniProjetoModulo05Elegance.config;
 
-import br.com.zup.MiniProjetoModulo05Elegance.exception.ClienteNaoEncontrado;
-import br.com.zup.MiniProjetoModulo05Elegance.exception.MensagemErro;
-import br.com.zup.MiniProjetoModulo05Elegance.exception.PesquisarCpfException;
-import br.com.zup.MiniProjetoModulo05Elegance.exception.PesquisarEmailException;
+import br.com.zup.MiniProjetoModulo05Elegance.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -28,22 +25,27 @@ public class ControllerAdvice {
 
         return erros;
     }
-
-    @ExceptionHandler(PesquisarEmailException.class)
+    @ExceptionHandler(CpfJaCadastrado.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    public MensagemErro tratarExcecaoPesquisarEmailException(PesquisarEmailException exception){
+    public MensagemErro tratarExecessaoDeCpfInvalido(CpfJaCadastrado exception) {
         return new MensagemErro(exception.getMessage());
     }
 
-    @ExceptionHandler(PesquisarCpfException.class)
+    @ExceptionHandler(EmailJaCadastrado.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    public MensagemErro tratarExcecaoPesquisarCpfException(PesquisarCpfException exception){
+    public MensagemErro tratarExcessaoPesquisarEmailException(EmailJaCadastrado exception){
         return new MensagemErro(exception.getMessage());
     }
 
     @ExceptionHandler(ClienteNaoEncontrado.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public MensagemErro tratarExcecaoDeClienteNaoEncontrado(ClienteNaoEncontrado exception){
+    public MensagemErro tratarExcessaoDeClienteNaoEncontrado(ClienteNaoEncontrado exception){
+        return new MensagemErro(exception.getMessage());
+    }
+
+    @ExceptionHandler(EsseProdutoJaFoiDeletado.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public MensagemErro tratarExcessaoDeProdutoJaCadastrado(EsseProdutoJaFoiDeletado exception){
         return new MensagemErro(exception.getMessage());
     }
 
