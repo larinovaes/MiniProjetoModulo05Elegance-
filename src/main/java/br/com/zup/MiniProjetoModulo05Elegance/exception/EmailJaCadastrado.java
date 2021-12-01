@@ -1,8 +1,8 @@
 package br.com.zup.MiniProjetoModulo05Elegance.exception;
 
-public class PesquisarEmailException extends RuntimeException{
+public class EmailJaCadastrado extends RuntimeException{
 
-    public PesquisarEmailException(String message) {
+    public EmailJaCadastrado(String message) {
         super(message);
     }
 
