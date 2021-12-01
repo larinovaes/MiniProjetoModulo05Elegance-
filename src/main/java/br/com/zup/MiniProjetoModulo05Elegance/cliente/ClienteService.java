@@ -1,6 +1,6 @@
 package br.com.zup.MiniProjetoModulo05Elegance.cliente;
 
-import br.com.zup.MiniProjetoModulo05Elegance.exception.ExceptioncpfInvalid;
+import br.com.zup.MiniProjetoModulo05Elegance.exception.CpfJaCadastrado;
 import br.com.zup.MiniProjetoModulo05Elegance.exception.EmailJaCadastrado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,7 +38,7 @@ public class ClienteService {
 
     public void validarCpf(String cpf) {
         if (clienteRepositoy.existsById(cpf)) {
-            throw new ExceptioncpfInvalid("CPF já cadastrado");
+            throw new CpfJaCadastrado("CPF já cadastrado");
         }
     }
 }
