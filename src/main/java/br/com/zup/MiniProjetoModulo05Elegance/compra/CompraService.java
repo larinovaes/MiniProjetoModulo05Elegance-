@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -58,6 +59,16 @@ public class CompraService {
         }
 
         return listaAtualizada;
+    }
+    public void adicionarCompraAoCliente(String cpf, Integer pedido){
+      Cliente cliente =  clienteRepositoy.findByCpf(cpf);
+      Optional<Compra> compra = compraRepository.findById(pedido);
+
+      if(compra.isPresent()){
+          cliente.getCompras().add(compra.get());
+          clienteRepositoy.save(cliente);
+      }
+
     }
 
 
