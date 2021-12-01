@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 
-public class CompraDtoSaida {
+public class ClienteSaidaDto {
     private String cpf;
     private String nome;
     private String telefone;
