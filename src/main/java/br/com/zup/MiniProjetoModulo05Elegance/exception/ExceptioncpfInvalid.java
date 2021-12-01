@@ -1,8 +1,8 @@
 package br.com.zup.MiniProjetoModulo05Elegance.exception;
 
-public class PesquisarCpfException extends RuntimeException{
+public class ExceptioncpfInvalid extends RuntimeException{
 
-    public PesquisarCpfException(String message) {
+    public ExceptioncpfInvalid(String message) {
         super(message);
     }
 }
