@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -44,13 +45,10 @@ public class CompraService {
     }
 
     public Double calcularValorTotal(List<Produto> produtos) {
-        double valorTotal=0;
-        for (Produto produtoReferencia : produtos) {
-            valorTotal = produtoReferencia.getQuantidadeDeProduto() * produtoReferencia.getValorDoProduto();
-        }
-
-        return valorTotal;
+        return produtos.stream().collect(Collectors.summingDouble(produto -> produto.getValorDoProduto()*
+                produto.getQuantidadeDeProduto()));
     }
+
 
     private List<Produto> buscarProdutos(List<Produto> produtos) {
 
