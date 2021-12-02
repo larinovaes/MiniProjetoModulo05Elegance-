@@ -25,9 +25,10 @@ public class CompraController {
         compraSaidaDTO = modelMapper.map(compra, CompraSaidaDTO.class);
         return compraSaidaDTO;
     }
+
     @PutMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void adicionarCompraAoCliente(@RequestBody AdicionarCompraDTO adicionarCompraDTO){
+    public void adicionarCompraAoCliente(@RequestBody AdicionarCompraDTO adicionarCompraDTO) {
         compraService.adicionarCompraAoCliente(adicionarCompraDTO.getCpf(), adicionarCompraDTO.getNumeroDoPedido());
     }
 }
