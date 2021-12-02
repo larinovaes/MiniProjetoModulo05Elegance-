@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,12 +39,20 @@ public class CompraService {
     public Compra salvarCompra(Compra compra) {
         Cliente clientes = clienteService.buscarClienteporCpf(compra.getCliente().getCpf());
         compra.setCliente(clientes);
-
-        List<Produto> produtos = buscarProdutos(compra.getProdutos());
-        compra.setProdutos(produtos);
+     //   List<Produto> produtos = buscarProdutos(compra.getProdutos());
+    //    compra.setProdutos(produtos);
+      compra.setValor(calcularValorTotal(compra.getProdutos()));
         return compraRepository.save(compra);
     }
 
+    public Double calcularValorTotal(List<Produto> produtos) {
+        double valorTotal=0;
+        for (Produto produtoReferencia : produtos) {
+            valorTotal = produtoReferencia.getQuantidadeDeProduto() * produtoReferencia.getValorDoProduto();
+        }
+
+        return valorTotal;
+    }
 
     private List<Produto> buscarProdutos(List<Produto> produtos) {
 
@@ -87,8 +94,8 @@ public class CompraService {
         throw new CompraNaoEncontrada("Compra não encontrada");
     }
 
-    public void deletarCompra (Integer numeroDoPedido){
-        if (!compraRepository.existsById(numeroDoPedido)){
+    public void deletarCompra(Integer numeroDoPedido) {
+        if (!compraRepository.existsById(numeroDoPedido)) {
             throw new CompraNaoEncontrada("compra não existe!");
         }
         compraRepository.deleteById(numeroDoPedido);

@@ -1,11 +1,13 @@
 package br.com.zup.MiniProjetoModulo05Elegance.produto;
 
+import br.com.zup.MiniProjetoModulo05Elegance.cliente.Cliente;
 import br.com.zup.MiniProjetoModulo05Elegance.exception.ClienteNaoEncontrado;
 import br.com.zup.MiniProjetoModulo05Elegance.exception.EsseProdutoJaFoiDeletado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProdutoService {

@@ -19,7 +19,7 @@ public class CompraSaidaDTO {
     private Integer numeroDoPedido;
     private ClienteSaidaDTO cliente;
     private List<Produto> produtos;
-    private Integer valorTotal;
+    private Double valor;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDate dataDeCompra = LocalDate.now();
 }
