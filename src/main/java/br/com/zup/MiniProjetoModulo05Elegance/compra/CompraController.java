@@ -53,4 +53,11 @@ public class CompraController {
         Compra compra = compraService.exibirCompraEspecifica(numeroDoPedido);
         return modelMapper.map(compra, CompraSaidaDTO.class);
     }
+
+    @DeleteMapping("/{numeroDoPedido}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletarCompra (@PathVariable Integer numeroDoPedido){
+        compraService.deletarCompra(numeroDoPedido);
+    }
+
 }
