@@ -53,31 +53,32 @@ public class CompraService {
         for (Produto produto : produtos) {
             if (produtoRepository.existsByNomeDoProduto(produto.getNomeDoProduto())) {
                 listaAtualizada.add(produtoRepository.findByNomeDoProduto(produto.getNomeDoProduto()));
-            }else {
+            } else {
                 listaAtualizada.add(produto);
             }
         }
 
         return listaAtualizada;
     }
-    public void adicionarCompraAoCliente(String cpf, Integer pedido){
-      Cliente cliente =  clienteRepositoy.findByCpf(cpf);
-      Optional<Compra> compra = compraRepository.findById(pedido);
 
-      if(compra.isPresent()){
-          cliente.getCompras().add(compra.get());
-          clienteRepositoy.save(cliente);
-      }
+    public void adicionarCompraAoCliente(String cpf, Integer pedido) {
+        Cliente cliente = clienteRepositoy.findByCpf(cpf);
+        Optional<Compra> compra = compraRepository.findById(pedido);
+
+        if (compra.isPresent()) {
+            cliente.getCompras().add(compra.get());
+            clienteRepositoy.save(cliente);
+        }
 
     }
 
+    public Produto somarProdutos(Double valorDoProduto) {
+     return  null;
+    }
 
+    public List<Compra>  listarCompras(Compra compra) {
+        List<Compra> compras = (List<Compra>) compraRepository.findAll();
+        return compras;
 
-
+    }
 }
-
-
-
-
-
-
