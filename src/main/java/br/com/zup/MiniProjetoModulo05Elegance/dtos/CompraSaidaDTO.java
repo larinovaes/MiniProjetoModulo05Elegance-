@@ -1,6 +1,7 @@
 package br.com.zup.MiniProjetoModulo05Elegance.dtos;
 
 import br.com.zup.MiniProjetoModulo05Elegance.produto.Produto;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,5 +20,6 @@ public class CompraSaidaDTO {
     private ClienteSaidaDTO cliente;
     private List<Produto> produtos;
     private Double valor;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDate dataDeCompra = LocalDate.now();
 }

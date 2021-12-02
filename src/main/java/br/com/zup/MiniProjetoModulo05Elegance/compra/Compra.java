@@ -27,7 +27,7 @@ public class Compra {
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Produto> produtos;
     private Double valor;
-    private LocalDate dataDeCompra = LocalDate.now();
+    private LocalDateTime dataDeCompra = LocalDateTime.now();
 
 
 
