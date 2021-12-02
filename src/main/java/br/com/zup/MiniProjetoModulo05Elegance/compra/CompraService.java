@@ -86,4 +86,11 @@ public class CompraService {
         }
         throw new CompraNaoEncontrada("Compra não encontrada");
     }
+
+    public void deletarCompra (Integer numeroDoPedido){
+        if (!compraRepository.existsById(numeroDoPedido)){
+            throw new CompraNaoEncontrada("compra não existe!");
+        }
+        compraRepository.deleteById(numeroDoPedido);
+    }
 }
