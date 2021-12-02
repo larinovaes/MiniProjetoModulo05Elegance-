@@ -33,8 +33,10 @@ public class CompraController {
 
     @PutMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void adicionarCompraAoCliente(@RequestBody AdicionarCompraDTO adicionarCompraDTO) {
+    public AdicionarCompraDTO adicionarCompraAoCliente(@RequestBody AdicionarCompraDTO adicionarCompraDTO) {
+        Compra compra = modelMapper.map(adicionarCompraDTO, Compra.class);
         compraService.adicionarCompraAoCliente(adicionarCompraDTO.getCpf(), adicionarCompraDTO.getNumeroDoPedido());
+        return adicionarCompraDTO;
     }
     @GetMapping
     public List<CompraSaidaDTO> exibirListaDeCompras() {
