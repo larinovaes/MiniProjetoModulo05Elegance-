@@ -49,4 +49,10 @@ public class ControllerAdvice {
         return new MensagemErro(exception.getMessage());
     }
 
+    @ExceptionHandler(CompraNaoEncontrada.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public MensagemErro tratarExcessaoDeCompraNaoEncontrada(CompraNaoEncontrada exception){
+        return new MensagemErro(exception.getMessage());
+    }
+
 }
