@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,23 +20,24 @@ import java.util.Optional;
 public class CompraService {
 
     private CompraRepository compraRepository;
-
     private ProdutoRepository produtoRepository;
-
-    @Autowired
     private ClienteRepositoy clienteRepositoy;
-    @Autowired
     private ClienteService clienteService;
-    @Autowired
     private ProdutoService produtoService;
 
 
-    @Autowired
-    public CompraService(CompraRepository compraRepository, ProdutoRepository produtoRepository) {
+    public CompraService(CompraRepository compraRepository, ProdutoRepository produtoRepository,
+                         ClienteRepositoy clienteRepositoy, ClienteService clienteService,
+                         ProdutoService produtoService) {
         this.compraRepository = compraRepository;
         this.produtoRepository = produtoRepository;
-
+        this.clienteRepositoy = clienteRepositoy;
+        this.clienteService = clienteService;
+        this.produtoService = produtoService;
     }
+
+    @Autowired
+
 
     public Compra salvarCompra(Compra compra) {
         Cliente clientes = clienteService.buscarClienteporCpf(compra.getCliente().getCpf());
@@ -73,14 +75,14 @@ public class CompraService {
 
     }
 
-    public List<Compra>  listarCompras() {
+    public List<Compra> listarCompras() {
         List<Compra> compras = (List<Compra>) compraRepository.findAll();
         return compras;
     }
 
     public Compra exibirCompraEspecifica(Integer numeroDoPedido) {
-        for (Compra compra:compraRepository.findAll()) {
-            if(compra.getNumeroDoPedido().equals(numeroDoPedido)) {
+        for (Compra compra : compraRepository.findAll()) {
+            if (compra.getNumeroDoPedido().equals(numeroDoPedido)) {
                 return compra;
             }
         }
