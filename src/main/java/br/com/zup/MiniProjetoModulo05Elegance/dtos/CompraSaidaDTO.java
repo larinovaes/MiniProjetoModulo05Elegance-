@@ -18,6 +18,6 @@ public class CompraSaidaDTO {
     private Integer numeroDoPedido;
     private ClienteSaidaDTO cliente;
     private List<Produto> produtos;
-    private Integer valorTotal;
+    private Double valor;
     private LocalDate dataDeCompra = LocalDate.now();
 }
