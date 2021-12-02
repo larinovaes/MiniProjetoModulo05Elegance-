@@ -3,6 +3,7 @@ package br.com.zup.MiniProjetoModulo05Elegance.compra;
 import br.com.zup.MiniProjetoModulo05Elegance.cliente.Cliente;
 import br.com.zup.MiniProjetoModulo05Elegance.cliente.ClienteRepositoy;
 import br.com.zup.MiniProjetoModulo05Elegance.cliente.ClienteService;
+import br.com.zup.MiniProjetoModulo05Elegance.exception.CompraNaoEncontrada;
 import br.com.zup.MiniProjetoModulo05Elegance.produto.Produto;
 import br.com.zup.MiniProjetoModulo05Elegance.produto.ProdutoRepository;
 import br.com.zup.MiniProjetoModulo05Elegance.produto.ProdutoService;
@@ -83,6 +84,6 @@ public class CompraService {
                 return compra;
             }
         }
-        throw new RuntimeException("Não econtrado");
+        throw new CompraNaoEncontrada("Compra não encontrada");
     }
 }
