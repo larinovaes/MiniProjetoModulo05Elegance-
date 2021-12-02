@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProdutoService {
@@ -25,7 +24,7 @@ public class ProdutoService {
     }
 
     public Produto produtoEspecifico(Integer codigoDoProduto) {
-        for (Produto referencia:produtoRepository.findAll()) {
+        for (Produto referencia : produtoRepository.findAll()) {
             if (referencia.getCodigoDoProduto().equals(codigoDoProduto)) {
                 return referencia;
             }
