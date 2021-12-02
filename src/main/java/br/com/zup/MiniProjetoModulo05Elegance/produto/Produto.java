@@ -16,7 +16,6 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codigoDoProduto;
-    @Column(unique = true, nullable = false)
     private String nomeDoProduto;
     private Double valorDoProduto;
     private Integer quantidadeDeProduto;
