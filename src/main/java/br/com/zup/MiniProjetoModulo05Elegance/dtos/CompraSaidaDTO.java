@@ -20,6 +20,6 @@ public class CompraSaidaDTO {
     private ClienteSaidaDTO cliente;
     private List<Produto> produtos;
     private Double valor;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDate dataDeCompra = LocalDate.now();
 }
