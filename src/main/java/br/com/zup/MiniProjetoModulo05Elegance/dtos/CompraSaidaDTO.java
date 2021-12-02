@@ -12,7 +12,8 @@ import java.util.List;
 @NoArgsConstructor
 
 public class CompraSaidaDTO {
+    private Integer numeroDoPedido;
     private ClienteSaidaDTO cliente;
-    private Integer valorTotal;
     private List<Produto> produtos;
+    private Integer valorTotal;
 }

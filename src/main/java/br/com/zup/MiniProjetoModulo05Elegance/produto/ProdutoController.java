@@ -41,8 +41,9 @@ public class ProdutoController {
     }
 
     @GetMapping("/{codigoDoProduto}")
-    public Produto exibirProdutosEspecifico(@PathVariable Integer codigoDoProduto) {
-      return produtoService.produtoEspecifico(codigoDoProduto);
+    public ProdutoDTO exibirProdutosEspecifico(@PathVariable Integer codigoDoProduto) {
+        Produto produto = produtoService.produtoEspecifico(codigoDoProduto);
+        return modelMapper.map(produto, ProdutoDTO.class);
     }
 
     @DeleteMapping("/{codigoDoProduto}")

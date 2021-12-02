@@ -53,31 +53,36 @@ public class CompraService {
         for (Produto produto : produtos) {
             if (produtoRepository.existsByNomeDoProduto(produto.getNomeDoProduto())) {
                 listaAtualizada.add(produtoRepository.findByNomeDoProduto(produto.getNomeDoProduto()));
-            }else {
+            } else {
                 listaAtualizada.add(produto);
             }
         }
 
         return listaAtualizada;
     }
-    public void adicionarCompraAoCliente(String cpf, Integer pedido){
-      Cliente cliente =  clienteRepositoy.findByCpf(cpf);
-      Optional<Compra> compra = compraRepository.findById(pedido);
 
-      if(compra.isPresent()){
-          cliente.getCompras().add(compra.get());
-          clienteRepositoy.save(cliente);
-      }
+    public void adicionarCompraAoCliente(String cpf, Integer pedido) {
+        Cliente cliente = clienteRepositoy.findByCpf(cpf);
+        Optional<Compra> compra = compraRepository.findById(pedido);
+
+        if (compra.isPresent()) {
+            cliente.getCompras().add(compra.get());
+            clienteRepositoy.save(cliente);
+        }
 
     }
 
+    public List<Compra>  listarCompras() {
+        List<Compra> compras = (List<Compra>) compraRepository.findAll();
+        return compras;
+    }
 
-
-
+    public Compra exibirCompraEspecifica(Integer numeroDoPedido) {
+        for (Compra compra:compraRepository.findAll()) {
+            if(compra.getNumeroDoPedido().equals(numeroDoPedido)) {
+                return compra;
+            }
+        }
+        throw new RuntimeException("Não econtrado");
+    }
 }
-
-
-
-
-
-
