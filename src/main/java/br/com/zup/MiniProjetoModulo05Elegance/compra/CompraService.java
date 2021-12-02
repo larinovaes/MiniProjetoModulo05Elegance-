@@ -26,6 +26,7 @@ public class CompraService {
     private ProdutoService produtoService;
 
 
+    @Autowired
     public CompraService(CompraRepository compraRepository, ProdutoRepository produtoRepository,
                          ClienteRepositoy clienteRepositoy, ClienteService clienteService,
                          ProdutoService produtoService) {
@@ -35,9 +36,6 @@ public class CompraService {
         this.clienteService = clienteService;
         this.produtoService = produtoService;
     }
-
-    @Autowired
-
 
     public Compra salvarCompra(Compra compra) {
         Cliente clientes = clienteService.buscarClienteporCpf(compra.getCliente().getCpf());
