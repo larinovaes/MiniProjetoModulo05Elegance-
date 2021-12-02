@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -25,6 +27,8 @@ public class Compra {
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Produto> produtos;
     private Double valor;
-    private LocalDateTime dataDeCompra;
+    private LocalDate dataDeCompra = LocalDate.now();
+
+
 
 }

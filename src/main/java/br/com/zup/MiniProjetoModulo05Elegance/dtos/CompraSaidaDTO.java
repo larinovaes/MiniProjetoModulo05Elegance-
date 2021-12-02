@@ -5,7 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -17,5 +19,5 @@ public class CompraSaidaDTO {
     private ClienteSaidaDTO cliente;
     private List<Produto> produtos;
     private Integer valorTotal;
-    private LocalDateTime dataDeCompra;
+    private LocalDate dataDeCompra = LocalDate.now();
 }
