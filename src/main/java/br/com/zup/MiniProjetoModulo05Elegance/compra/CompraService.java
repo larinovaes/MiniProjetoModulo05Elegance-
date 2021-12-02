@@ -72,13 +72,17 @@ public class CompraService {
 
     }
 
-    public Produto somarProdutos(Double valorDoProduto) {
-     return  null;
-    }
-
-    public List<Compra>  listarCompras(Compra compra) {
+    public List<Compra>  listarCompras() {
         List<Compra> compras = (List<Compra>) compraRepository.findAll();
         return compras;
+    }
 
+    public Compra exibirCompraEspecifica(Integer numeroDoPedido) {
+        for (Compra compra:compraRepository.findAll()) {
+            if(compra.getNumeroDoPedido().equals(numeroDoPedido)) {
+                return compra;
+            }
+        }
+        throw new RuntimeException("Não econtrado");
     }
 }
