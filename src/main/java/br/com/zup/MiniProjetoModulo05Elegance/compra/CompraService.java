@@ -10,7 +10,6 @@ import br.com.zup.MiniProjetoModulo05Elegance.produto.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -47,21 +46,6 @@ public class CompraService {
     public Double calcularValorTotal(List<Produto> produtos) {
         return produtos.stream().collect(Collectors.summingDouble(produto -> produto.getValorDoProduto() *
                 produto.getQuantidadeDeProduto()));
-    }
-
-    private List<Produto> buscarProdutos(List<Produto> produtos) {
-
-        List<Produto> listaAtualizada = new ArrayList<>();
-
-        for (Produto produto : produtos) {
-            if (produtoRepository.existsByNomeDoProduto(produto.getNomeDoProduto())) {
-                listaAtualizada.add(produtoRepository.findByNomeDoProduto(produto.getNomeDoProduto()));
-            } else {
-                listaAtualizada.add(produto);
-            }
-        }
-
-        return listaAtualizada;
     }
 
     public void adicionarCompraAoCliente(String cpf, Integer pedido) {
