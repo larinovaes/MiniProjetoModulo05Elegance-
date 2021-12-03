@@ -10,6 +10,7 @@ import br.com.zup.MiniProjetoModulo05Elegance.produto.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -21,22 +22,41 @@ public class CompraService {
     private CompraRepository compraRepository;
     private ClienteRepositoy clienteRepositoy;
     private ClienteService clienteService;
+    private ProdutoRepository produtoRepository;
 
 
     @Autowired
     public CompraService(CompraRepository compraRepository,ClienteRepositoy clienteRepositoy,
-                         ClienteService clienteService) {
+                         ClienteService clienteService, ProdutoRepository produtoRepository) {
         this.compraRepository = compraRepository;
         this.clienteRepositoy = clienteRepositoy;
         this.clienteService = clienteService;
+        this.produtoRepository = produtoRepository;
     }
 
     public Compra salvarCompra(Compra compra) {
         Cliente clientes = clienteService.buscarClienteporCpf(compra.getCliente().getCpf());
         compra.setCliente(clientes);
+        List<Produto> produtos = buscarProdutos(compra.getProdutos());
+        compra.setProdutos(produtos);
         compra.setValor(calcularValorTotal(compra.getProdutos()));
         return compraRepository.save(compra);
     }
+
+    private List<Produto> buscarProdutos(List<Produto> produtos) {
+
+        List<Produto> listaAtualizada = new ArrayList<>();
+        for (Produto produto : produtos) {
+
+            if (produtoRepository.existsByNomeDoProduto(produto.getNomeDoProduto())) {
+                listaAtualizada.add(produtoRepository.findByNomeDoProduto(produto.getNomeDoProduto()));
+            } else {
+                listaAtualizada.add(produto);
+            }
+        }
+        return listaAtualizada;
+    }
+
 
     public Double calcularValorTotal(List<Produto> produtos) {
         return produtos.stream().collect(Collectors.summingDouble(produto -> produto.getValorDoProduto() *
