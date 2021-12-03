@@ -40,15 +40,14 @@ public class CompraService {
     public Compra salvarCompra(Compra compra) {
         Cliente clientes = clienteService.buscarClienteporCpf(compra.getCliente().getCpf());
         compra.setCliente(clientes);
-      compra.setValor(calcularValorTotal(compra.getProdutos()));
+        compra.setValor(calcularValorTotal(compra.getProdutos()));
         return compraRepository.save(compra);
     }
 
     public Double calcularValorTotal(List<Produto> produtos) {
-        return produtos.stream().collect(Collectors.summingDouble(produto -> produto.getValorDoProduto()*
+        return produtos.stream().collect(Collectors.summingDouble(produto -> produto.getValorDoProduto() *
                 produto.getQuantidadeDeProduto()));
     }
-
 
     private List<Produto> buscarProdutos(List<Produto> produtos) {
 
