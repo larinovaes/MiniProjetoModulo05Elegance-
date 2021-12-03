@@ -7,9 +7,5 @@ import org.springframework.stereotype.Repository;
 public interface ClienteRepositoy extends CrudRepository<Cliente, String> {
     Cliente findByCpf(String cpf);
 
-    boolean existsByCpf(String cpf);
-
-    Cliente findByNome(String nome);
-
     Integer countByEmail(String email);
 }

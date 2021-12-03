@@ -6,11 +6,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProdutoRepository extends CrudRepository<Produto, Integer> {
 
-
-    Produto findAllByCodigoDoProduto(Integer codigoDoProduto);
-
-    boolean existsByCodigoDoProduto(Integer codigoDoProduto);
-
     boolean existsByNomeDoProduto(String nomeDoProduto);
 
     Produto findByNomeDoProduto(String nomeDoProduto);
