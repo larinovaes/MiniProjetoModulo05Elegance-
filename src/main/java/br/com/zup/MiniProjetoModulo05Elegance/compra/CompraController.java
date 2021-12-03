@@ -1,9 +1,6 @@
 package br.com.zup.MiniProjetoModulo05Elegance.compra;
 
-import br.com.zup.MiniProjetoModulo05Elegance.cliente.Cliente;
 import br.com.zup.MiniProjetoModulo05Elegance.dtos.AdicionarCompraDTO;
-import br.com.zup.MiniProjetoModulo05Elegance.dtos.ClienteFiltroDTO;
-import br.com.zup.MiniProjetoModulo05Elegance.dtos.CompraDTO;
 import br.com.zup.MiniProjetoModulo05Elegance.dtos.CompraSaidaDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
