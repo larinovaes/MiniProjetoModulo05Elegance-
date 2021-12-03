@@ -19,21 +19,16 @@ import java.util.stream.Collectors;
 public class CompraService {
 
     private CompraRepository compraRepository;
-    private ProdutoRepository produtoRepository;
     private ClienteRepositoy clienteRepositoy;
     private ClienteService clienteService;
-    private ProdutoService produtoService;
 
 
     @Autowired
-    public CompraService(CompraRepository compraRepository, ProdutoRepository produtoRepository,
-                         ClienteRepositoy clienteRepositoy, ClienteService clienteService,
-                         ProdutoService produtoService) {
+    public CompraService(CompraRepository compraRepository,ClienteRepositoy clienteRepositoy,
+                         ClienteService clienteService) {
         this.compraRepository = compraRepository;
-        this.produtoRepository = produtoRepository;
         this.clienteRepositoy = clienteRepositoy;
         this.clienteService = clienteService;
-        this.produtoService = produtoService;
     }
 
     public Compra salvarCompra(Compra compra) {
